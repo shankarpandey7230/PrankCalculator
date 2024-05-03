@@ -137,3 +137,24 @@ body {
 .btn-equal {
   grid-area: equal;
 }
+
+.prank {
+  background: red;
+  color: white;
+  animation: shape 0.5s;
+}
+
+@keyframes shape {
+  0% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
+}

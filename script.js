@@ -1,6 +1,8 @@
 const buttons = document.querySelectorAll('.btn');
 // console.log(buttons);
 const displayArea = document.querySelector('.display');
+// load audio
+const audio = new Audio('./assests/prank.mp3');
 
 let valueToDisplay = '';
 let lastOperator = '';
@@ -13,7 +15,8 @@ const randomValue = () => {
   return num < 4 ? num : 0;
 };
 const actionButton = (value) => {
-  console.log(value);
+  displayArea.classList.remove('prank');
+  // console.log(value);
 
   if (value === 'AC') {
     valueToDisplay = '';
@@ -65,6 +68,10 @@ const actionButton = (value) => {
 };
 const totalValue = () => {
   const prankValue = randomValue();
+  if (prankValue) {
+    displayArea.classList.add('prank');
+    audio.play();
+  }
   const total = eval(valueToDisplay) + prankValue;
   // console.log(total);
   valueToDisplay = total.toString();
