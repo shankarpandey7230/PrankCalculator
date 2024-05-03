@@ -26,7 +26,7 @@ const actionButton = (value) => {
     valueToDisplay = valueToDisplay.slice(0, -1);
     return display(valueToDisplay);
   }
-  if (value === '=') {
+  if (value === '=' || value === 'Enter') {
     lastOperator = '';
     // getting last character
     const lastChar = valueToDisplay[valueToDisplay.length - 1];
@@ -78,12 +78,27 @@ const totalValue = () => {
   display(valueToDisplay);
 };
 buttons.forEach((btn) => {
+  btn.addEventListener('mousedown', () => {
+    btn.style.scale = '.9';
+  });
   btn.addEventListener('click', () => {
     // console.log(btn);
+    btn.style.scale = '1';
     const value = btn.innerText;
 
     // console.log(value);
     // console.log(valueToDisplay);
     actionButton(value);
   });
+});
+
+// binding keyboard with browser
+
+document.addEventListener('keypress', (e) => {
+  console.log(e.code);
+  const value = e.key;
+  if (e.code.includes('Key')) {
+    return;
+  }
+  actionButton(value);
 });
